@@ -1,4 +1,31 @@
 const mongoose = require('mongoose');
+const bookshelfSchema = new mongoose.Schema({
+    author: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    booklength: {
+      type: Number,
+      required: false,
+    },
+    notes: {
+      type: String,
+      required: false,
+    },
+    rating: {
+      type: String,
+      required: false,
+    },
+    status: {
+      type: String,
+      enum: ['read', 'currently reading', 'future read'],
+    },
+});
+
 
 const userSchema = mongoose.Schema({
   username: {
@@ -9,6 +36,7 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  bookshelves: [bookshelfSchema]
 });
 
 const User = mongoose.model('User', userSchema);
