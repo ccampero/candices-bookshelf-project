@@ -29,11 +29,13 @@ app.use(
 );
 
 app.get('/', (req, res) => {
-  res.render('index.ejs', {
-    user: req.session.user,
-  });
+  try {
+    res.render('bookshelves/index.ejs');
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
 });
-
 
 
 app.use('/auth', authController);
