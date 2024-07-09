@@ -24,6 +24,10 @@ const bookshelfSchema = new mongoose.Schema({
       type: String,
       enum: ['read', 'currently reading', 'future read'],
     },
+    genre: {
+      type: String,
+      enum: ['fiction', 'nonfiction'],
+    },
 });
 
 
