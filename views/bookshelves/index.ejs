@@ -10,7 +10,7 @@
   <h1>Your Bookshelf</h1>
   <ul>
     <% user.bookshelves.forEach(bookshelf => { %>
-      <li><%= bookshelf.name %></li>
+      <li><%= bookshelf.title %> by <%= bookshelf.author %></li>
     <% }) %>
   </ul>
   <a href="/users/<%= user._id %>/bookshelves/new">Add a New Book</a> 
