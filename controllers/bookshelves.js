@@ -50,4 +50,16 @@ router.get('/:applicationId', async (req, res) => {
   });
 
 
+  router.delete('/:applicationId', async (req, res) => {
+    try {
+      const currentUser = await User.findById(req.session.user._id);
+      currentUser.bookshelves.id(req.params.bookshelfId).deleteOne();
+      await currentUser.save();
+      res.redirect(`/users/${currentUser._id}/bookshelves`);
+    } catch (error) {
+      console.log(error);
+      res.redirect('/')
+    }
+  });
+
 module.exports = router;

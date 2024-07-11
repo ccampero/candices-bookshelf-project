@@ -15,5 +15,11 @@
     <a href="<%= bookshelf.postingLink %>">View Book</a>
   <% } %>
   <p>Current Status: <%= bookshelf.status %></p>
+  <form
+    action="/users/<%= user._id %>/bookshelves/<%= bookshelf._id %>?_method=DELETE"
+    method="POST"
+  >
+    <button type="submit">Delete this Book</button>
+  </form>
 </body>
 </html>
