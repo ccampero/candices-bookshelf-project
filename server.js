@@ -32,14 +32,7 @@ app.use(
 
 app.use(passUserToView); 
 
-app.get('/', (req, res) => {
-  try {
-    res.render('bookshelves/index.ejs');
-  } catch (error) {
-    console.log(error)
-    res.redirect('/')
-  }
-});
+
 
 app.get('/', (req, res) => {
   if (req.session.user) {

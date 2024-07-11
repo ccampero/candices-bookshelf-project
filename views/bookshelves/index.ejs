@@ -6,7 +6,13 @@
   <title>Your Bookshelf</title>
 </head>
 <body>
-    <%- include('../partials/_navbar.ejs') %>
+  <% include('../partials/_navbar.ejs') %>
   <h1>Your Bookshelf</h1>
+  <ul>
+    <% user.bookshelves.forEach(bookshelf => { %>
+      <li><%= bookshelf.name %></li>
+    <% }) %>
+  </ul>
+  <a href="/users/<%= user._id %>/bookshelves/new">Add a New Book</a> 
 </body>
 </html>
