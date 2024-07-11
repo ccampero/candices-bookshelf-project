@@ -9,6 +9,10 @@ router.get('/', (req, res) => {
     res.send('hello bookshelves index route');
 });
 
+router.get('/new', async (req, res) => {
+    res.render('bookshelves/new.ejs');
+  });
+  
 module.exports = router;
 
 const User = require('../models/user.js');

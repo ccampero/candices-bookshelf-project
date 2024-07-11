@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add a New Book</title>
+</head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Add a New Book</h1>
+    <form action="" method="">
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author">
+        
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title">
+        
+        <label for="booklength">Booklength:</label>
+        <input type="number" name="pages" id="booklength"></input type>
+        
+        <label for="notes">Notes:</label>
+        <input type="text" name="notes" id="notes">
+        
+        <label for="rating">Rating:</label>
+        <select id="rating" name="rating">
+          <option value="*">*</option>
+          <option value="**">**</option>
+          <option value="***">***</option>
+          <option value="****">****</option>
+          <option value="*****">*****</option>
+        </select>
+        
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+          <option value="read">Read</option>
+          <option value="reading">Reading</option>
+          <option value="future read">Future Read</option>
+          </select>
+        
+        <label for="genre">Genre:</label>
+        <select id="genre" name="genre">
+          <option value="fiction">Fiction</option>
+          <option value="non-fiction">Non-Fiction</option>
+        </select>
+        <button type="submit">Add Book</button>
+      </form>
+  </body>
+</html>
