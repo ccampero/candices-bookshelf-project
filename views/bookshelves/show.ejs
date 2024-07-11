@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= bookshelf.title %></title>
+</head>
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+  <h1><%= bookshelf.title %> by <%= bookshelf.author %></h1>
+  <% if (bookshelf.notes) { %>
+    <p>Notes: <%= bookshelf.notes %></p>
+  <% } %>
+  <% if (bookshelf.postingLink) { %>
+    <a href="<%= bookshelf.postingLink %>">View Book</a>
+  <% } %>
+  <p>Current Status: <%= bookshelf.status %></p>
+</body>
+</html>
