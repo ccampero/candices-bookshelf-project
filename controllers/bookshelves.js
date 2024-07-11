@@ -17,7 +17,16 @@ router.get('/new', async (req, res) => {
   router.post('/', async (req, res) => {
     try {
       const currentUser = await User.findById(req.session.user._id);
-      currentUser.bookshelves.push(req.body);
+      const newBook = {
+        author: req.body.author,
+        title: req.body.title,
+        booklength: req.body.booklength,
+        notes: req.body.notes,
+        rating: req.body.rating,
+        status: req.body.status,
+        genre: req.body.genre
+    };
+      currentUser.bookshelves.push(newBook);
       await currentUser.save();
       res.redirect(`/users/${currentUser._id}/bookshelves`);
     } catch (error) {
@@ -36,30 +45,75 @@ router.get('/new', async (req, res) => {
     }
 });
 
-router.get('/:applicationId', async (req, res) => {
+router.get('/:bookId', async (req, res) => {
     try {
-      const currentUser = await User.findById(req.session.user._id);
-      const bookshelf = currentUser.bookshelves.id(req.params.bookshelfId);
-      res.render('bookshelves/show.ejs', {
-        bookshelf: bookshelf,
-      });
+        const currentUser = await User.findById(req.session.user._id);
+        const book = currentUser.bookshelves.id(req.params.bookId);
+        if (!book) {
+            return res.status(404).send('Book not found');
+        }
+        res.render('bookshelves/show.ejs', { user: currentUser, book });
     } catch (error) {
-      console.log(error);
-      res.redirect('/')
+        console.log(error);
+        res.redirect('/');
     }
-  });
+});
 
 
-  router.delete('/:applicationId', async (req, res) => {
+router.delete('/:bookshelfId', async (req, res) => {
     try {
-      const currentUser = await User.findById(req.session.user._id);
-      currentUser.bookshelves.id(req.params.bookshelfId).deleteOne();
-      await currentUser.save();
-      res.redirect(`/users/${currentUser._id}/bookshelves`);
+        const currentUser = await User.findById(req.session.user._id);
+        const indexToRemove = currentUser.bookshelves.findIndex(bookshelf =>
+            bookshelf._id.equals(req.params.bookshelfId)
+        );
+        if (indexToRemove === -1) {
+            return res.status(404).send('Bookshelf not found');
+        }
+        currentUser.bookshelves.splice(indexToRemove, 1); 
+        await currentUser.save();
+        res.redirect(`/users/${currentUser._id}/bookshelves`);
     } catch (error) {
-      console.log(error);
-      res.redirect('/')
+        console.log(error);
+        res.redirect('/');
     }
-  });
+});
+
+router.get('/:bookshelfId/edit', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const book = currentUser.bookshelves.id(req.params.bookshelfId);
+        if (!book) {
+            return res.status(404).send('Book not found');
+        }
+        res.render('bookshelves/edit.ejs', { user: currentUser, book: book });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
+
+router.put('/:bookshelfId', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const book = currentUser.bookshelves.id(req.params.bookshelfId); 
+        if (!book) {
+            return res.status(404).send('Bookshelf not found');
+        }
+        book.author = req.body.author;
+        book.title = req.body.title;
+        book.notes = req.body.notes;
+        book.rating = req.body.rating;
+        book.status = req.body.status;
+        book.genre = req.body.genre;
+
+        await currentUser.save();
+        res.redirect(`/users/${currentUser._id}/bookshelves/${req.params.bookshelfId}`); 
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
+});
+
+
 
 module.exports = router;

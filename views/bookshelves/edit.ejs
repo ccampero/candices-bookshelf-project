@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editing <%= book.title %></title>
+</head>
+<body>
+  <%- include('../partials/_navbar.ejs') %>
+  <h1>Edit <%= book.title %> by <%= book.author %></h1>
+  <form 
+    action="/users/<%= user._id %>/bookshelves/<%= book._id %>" <!-- Remove ?_method=PUT -->
+    method="POST"
+  >
+    <input type="hidden" name="_method" value="PUT"> <!-- Method override for PUT request -->
+
+    <label for="author">Author:</label>
+    <input 
+      type="text" 
+      name="author" 
+      id="author" 
+      value="<%= book.author %>"
+    >
+
+    <label for="title">Title:</label>
+    <input 
+      type="text" 
+      name="title" 
+      id="title" 
+      value="<%= book.title %>"
+    >
+
+    <label for="notes">Notes:</label>
+    <textarea name="notes" id="notes"><%= book.notes %></textarea>
+
+    <label for="rating">Rating:</label>
+    <select id="rating" name="rating">
+      <option value="*" <%= book.rating === "*" ? "selected" : "" %>>*</option>
+      <option value="**" <%= book.rating === "**" ? "selected" : "" %>>**</option>
+      <option value="***" <%= book.rating === "***" ? "selected" : "" %>>***</option>
+      <option value="****" <%= book.rating === "****" ? "selected" : "" %>>****</option>
+      <option value="*****" <%= book.rating === "*****" ? "selected" : "" %>>*****</option>
+    </select>
+
+    <label for="status">Status:</label>
+    <select id="status" name="status">
+      <option value="read" <%= book.status === "read" ? "selected" : "" %>>Read</option>
+      <option value="reading" <%= book.status === "reading" ? "selected" : "" %>>Reading</option>
+      <option value="future read" <%= book.status === "future read" ? "selected" : "" %>>Future Read</option>
+    </select>
+
+    <label for="genre">Genre:</label>
+    <select id="genre" name="genre">
+      <option value="fiction" <%= book.genre === "fiction" ? "selected" : "" %>>Fiction</option>
+      <option value="non-fiction" <%= book.genre === "non-fiction" ? "selected" : "" %>>Non-Fiction</option>
+    </select>
+
+    <button type="submit">Update Book</button>
+  </form>
+</body>
+</html>

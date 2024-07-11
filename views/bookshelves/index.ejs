@@ -11,7 +11,7 @@
   <ul>
     <% user.bookshelves.forEach(bookshelf => { %>
       <li>
-        <a href="/users/<%= user._id %>/bookshelves/<%= bookshelf._id %>"></a>
+        <a href="/users/<%= user._id %>/bookshelves/<%= bookshelf._id %>">View Books</a>
         <%= bookshelf.title %> by <%= bookshelf.author %></li>
     <% }) %>
   </ul>
