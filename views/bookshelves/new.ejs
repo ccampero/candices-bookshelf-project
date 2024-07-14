@@ -1,13 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add a New Book</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
   <body>
     <%- include('../partials/_navbar.ejs') %>
     <h1>Add a New Book</h1>
+    <div class="new-body">
+
     <form action="/users/<%= user._id %>/bookshelves" method="POST">
         <label for="author">Author:</label>
         <input type="text" name="author" id="author">
@@ -44,5 +48,6 @@
         </select>
         <button type="submit">Add Book</button>
       </form>
+    </div>
   </body>
 </html>

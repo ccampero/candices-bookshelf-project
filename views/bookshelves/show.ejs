@@ -1,28 +1,46 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><%= book.title %></title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
+  <div class="show-body">
+    <div class="show-header">
   <h1><%= book.title %> by <%= book.author %></h1>
+  <div class="show-sidebar">
+    <div class="show-actions">
+      <a href="/users/<%= user._id %>/bookshelves/<%= book._id %>/edit">
+        Edit App
+      </a>
+      <form action="/users/<%= user._id %>/bookshelves/<%= book._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete Book</button>
+      </form>
+    </div>
+    <p>Current Status: <%= book.status %>
+    </p>
+    <p>Rating: <%= book.rating %>
+    </p>
+    <p>Genre: <%= book.genre %>
+    </p>
+  </div>
+</div>
+<div class="show-notes-container">
+
   <% if (book.notes) { %>
     <p>Notes: <%= book.notes %></p>
   <% } %>
   <% if (book.postingLink) { %>
     <a href="<%= book.postingLink %>">View Book</a>
   <% } %>
-  <p>Current Status: <%= book.status %></p>
-  <a href="/users/<%= user._id %>/bookshelves/<%= book._id %>/edit">
-    Edit this Book
-  </a>
-  <form
+    <form
     action="/users/<%= user._id %>/bookshelves/<%= book._id %>?_method=DELETE"
     method="POST"
   >
-    <button type="submit">Delete this Book</button>
   </form>
 </body>
 </html>
