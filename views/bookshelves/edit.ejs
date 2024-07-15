@@ -9,6 +9,7 @@
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
+  <div class="content">
   <h1>Edit <%= book.title %> by <%= book.author %></h1>
   <div class="edit-body"></div>
   <form action="/users/<%= user._id %>/bookshelves/<%= book._id %>?_method=PUT" method="POST">
@@ -47,5 +48,6 @@
 
     <button type="submit">Update Book</button>
   </form>
+  </div>
 </body>
 </html>

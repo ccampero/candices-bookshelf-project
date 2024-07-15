@@ -8,15 +8,21 @@
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
+  <div class="background-container"></div>
+  <div class="overlay"></div>
+  <div class="content">
   <% include('../partials/_navbar.ejs') %>
   <h1>Your Bookshelf</h1>
+  <div class="book-info"></div>
   <ul>
     <% user.bookshelves.forEach(bookshelf => { %>
+      <div class="book-item"></div>
       <li>
         <a href="/users/<%= user._id %>/bookshelves/<%= bookshelf._id %>">View Books</a>
         <%= bookshelf.title %> by <%= bookshelf.author %></li>
     <% }) %>
   </ul>
   <a href="/users/<%= user._id %>/bookshelves/new">Add a New Book</a> 
+  </div>
 </body>
 </html>

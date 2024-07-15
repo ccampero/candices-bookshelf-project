@@ -9,13 +9,14 @@
 </head>
 <body>
   <%- include('../partials/_navbar.ejs') %>
+  <div class="content">
   <div class="show-body">
     <div class="show-header">
   <h1><%= book.title %> by <%= book.author %></h1>
   <div class="show-sidebar">
     <div class="show-actions">
       <a href="/users/<%= user._id %>/bookshelves/<%= book._id %>/edit">
-        Edit App
+        Edit Book
       </a>
       <form action="/users/<%= user._id %>/bookshelves/<%= book._id %>?_method=DELETE" method="POST">
         <button type="submit">Delete Book</button>
@@ -42,5 +43,6 @@
     method="POST"
   >
   </form>
+</div>
 </body>
 </html>
