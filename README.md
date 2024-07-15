@@ -5,5 +5,5 @@
 ###                 https://coolors.co/88958d-606d5d-bc9cb0-d3cdd7-ddf2eb
 ###                 https://generalassembly.instructure.com/courses/358/pages/men-stack-embedding-related-data-skyrockit?module_item_id=18998
 ###                 https://trello.com/c/F3bfy5j3/13-stretch-goals-erd
-#### Technologies used: JavaScript, Node.js, HTML, CSS Style Sheets
+#### Technologies used: JavaScript, Node.js, HTML, CSS, Express.js, Mongoose. MONGODB
 ##### Next Steps: In the future I would like to add more style, images, and functionality to my app.
