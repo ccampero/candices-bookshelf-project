@@ -97,10 +97,10 @@ router.put('/:bookshelfId', async (req, res) => {
             return res.status(404).send('Bookshelf not found');
         }
 
-        // Log the received data
+       
         console.log('Received Data:', req.body);
 
-        // Update the book object with new values
+        
         book.author = req.body.author;
         book.title = req.body.title;
         book.notes = req.body.notes;
@@ -110,7 +110,7 @@ router.put('/:bookshelfId', async (req, res) => {
 
         await currentUser.save();
 
-        // Fetch the updated user to verify the change
+        
         const updatedUser = await User.findById(req.session.user._id);
         console.log('Updated User:', updatedUser.bookshelves.id(req.params.bookshelfId));
 

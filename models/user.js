@@ -8,10 +8,6 @@ const bookshelfSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    booklength: {
-      type: Number,
-      required: false,
-    },
     notes: {
       type: String,
       required: false,
