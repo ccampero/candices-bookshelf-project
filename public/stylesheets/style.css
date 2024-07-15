@@ -11,15 +11,7 @@ body {
     background-color: #606D5D;
     background-image: url('https://wallpaperaccess.com/full/4907559.jpg');
     }
-    .background-container::before {
-        content: "image of a library with books on shelves";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-  .background-container {
+.background-container {
     position: fixed;
     top: 0;
     left: 0;
