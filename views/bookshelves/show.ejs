@@ -35,9 +35,7 @@
   <% if (book.notes) { %>
     <p>Notes: <%= book.notes %></p>
   <% } %>
-  <% if (book.postingLink) { %>
-    <a href="<%= book.postingLink %>">View Book</a>
-  <% } %>
+
     <form
     action="/users/<%= user._id %>/bookshelves/<%= book._id %>?_method=DELETE"
     method="POST"
